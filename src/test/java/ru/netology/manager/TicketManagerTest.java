@@ -21,6 +21,10 @@ class TicketManagerTest {
     private Ticket spbSochi2 = new Ticket(9,9500, "LED", "AER", 200);
     private Ticket sochiSpb2 = new Ticket(10,9900, "AER", "LED", 190);
     private Ticket sochiMsk2 = new Ticket(11,7000, "AER", "DME", 180);
+    private Ticket spbMsk3 = new Ticket(12,3500, "LED", "DME", 90);
+    private Ticket spbMsk4 = new Ticket(13,1900, "LED", "DME", 90);
+    private Ticket spbMsk5 = new Ticket(14,5000, "LED", "DME", 90);
+    private Ticket spbMsk6 = new Ticket(1,4500, "LED", "DME", 90);
 
 
     @BeforeEach
@@ -37,13 +41,17 @@ class TicketManagerTest {
         repository.save(spbSochi2);
         repository.save(sochiSpb2);
         repository.save(sochiMsk2);
+        repository.save(spbMsk3);
+        repository.save(spbMsk4);
+        repository.save(spbMsk5);
+        repository.save(spbMsk6);
 
     }
 
     @Test
     void searchAndSortTicket() {
         Ticket[] actual = manager.searchBy("LED", "DME");
-        Ticket[] expected = new Ticket[]{spbMsk2, spbMsk};
+        Ticket[] expected = new Ticket[]{spbMsk4,spbMsk2, spbMsk, spbMsk3, spbMsk6, spbMsk5};
         assertArrayEquals(expected, actual);
     }
 
